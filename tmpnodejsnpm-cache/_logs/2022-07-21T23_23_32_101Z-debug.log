@@ -1,0 +1,40 @@
+0 info it worked if it ends with ok
+1 verbose cli [
+1 verbose cli   'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\Erick Oliveira\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'i',
+1 verbose cli   'sass@4.14.1'
+1 verbose cli ]
+2 info using npm@6.14.11
+3 info using node@v14.16.0
+4 verbose npm-session 4c2cc4ae7c06de19
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 http fetch GET 200 https://registry.npmjs.org/sass 218ms
+8 silly fetchPackageMetaData error for sass@4.14.1 No matching version found for sass@4.14.1.
+9 timing stage:rollbackFailedOptional Completed in 0ms
+10 timing stage:runTopLevelLifecycles Completed in 1389ms
+11 verbose type version
+12 verbose stack sass: No matching version found for sass@4.14.1.
+12 verbose stack     at pickManifest (C:\Users\Erick Oliveira\AppData\Roaming\npm\node_modules\npm\node_modules\npm-pick-manifest\index.js:122:13)
+12 verbose stack     at C:\Users\Erick Oliveira\AppData\Roaming\npm\node_modules\npm\node_modules\pacote\lib\fetchers\registry\manifest.js:24:14
+12 verbose stack     at tryCatcher (C:\Users\Erick Oliveira\AppData\Roaming\npm\node_modules\npm\node_modules\bluebird\js\release\util.js:16:23)
+12 verbose stack     at Promise._settlePromiseFromHandler (C:\Users\Erick Oliveira\AppData\Roaming\npm\node_modules\npm\node_modules\bluebird\js\release\promise.js:517:31)
+12 verbose stack     at Promise._settlePromise (C:\Users\Erick Oliveira\AppData\Roaming\npm\node_modules\npm\node_modules\bluebird\js\release\promise.js:574:18)
+12 verbose stack     at Promise._settlePromise0 (C:\Users\Erick Oliveira\AppData\Roaming\npm\node_modules\npm\node_modules\bluebird\js\release\promise.js:619:10)
+12 verbose stack     at Promise._settlePromises (C:\Users\Erick Oliveira\AppData\Roaming\npm\node_modules\npm\node_modules\bluebird\js\release\promise.js:699:18)
+12 verbose stack     at _drainQueueStep (C:\Users\Erick Oliveira\AppData\Roaming\npm\node_modules\npm\node_modules\bluebird\js\release\async.js:138:12)
+12 verbose stack     at _drainQueue (C:\Users\Erick Oliveira\AppData\Roaming\npm\node_modules\npm\node_modules\bluebird\js\release\async.js:131:9)
+12 verbose stack     at Async._drainQueues (C:\Users\Erick Oliveira\AppData\Roaming\npm\node_modules\npm\node_modules\bluebird\js\release\async.js:147:5)
+12 verbose stack     at Immediate.Async.drainQueues [as _onImmediate] (C:\Users\Erick Oliveira\AppData\Roaming\npm\node_modules\npm\node_modules\bluebird\js\release\async.js:17:14)
+12 verbose stack     at processImmediate (internal/timers.js:461:21)
+13 verbose cwd C:\workspaces\dscatalog-web
+14 verbose Windows_NT 10.0.19044
+15 verbose argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\Erick Oliveira\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "i" "sass@4.14.1"
+16 verbose node v14.16.0
+17 verbose npm  v6.14.11
+18 error code ETARGET
+19 error notarget No matching version found for sass@4.14.1.
+20 error notarget In most cases you or one of your dependencies are requesting
+20 error notarget a package version that doesn't exist.
+21 verbose exit [ 1, true ]
