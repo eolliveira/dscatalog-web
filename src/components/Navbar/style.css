@@ -3,21 +3,29 @@
 }
 
 .nav-logo-text {
-  margin-left: 20px;
+  /* margin-left: 20px; */
   color: #ffffff;
 }
 
 .nav-menu-container {
-  width: 380px;
-  justify-content: space-around;
+  display: flex;
+  /* width: 380px; */
+  /* justify-content: space-around; */
 }
+
 .active {
   font-weight: bold;
+}
+
+.nav-menu-container li {
+  margin: 30px 15px 15px 15px;
+  /* margin: 15px; */
 }
 
 .nav-menu-container a {
   color: rgba(255, 255, 255, 0.5);
   font-size: 18px;
+  /* margin: 15px; */
 }
 
 .nav-menu-container a.active {

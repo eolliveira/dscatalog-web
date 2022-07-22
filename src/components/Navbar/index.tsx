@@ -21,10 +21,7 @@ function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div
-          className="nav-menu collapse navbar-collapse"
-          id="dscatalog-navbar"
-        >
+        <div className="collapse navbar-collapse" id="dscatalog-navbar">
           <ul className="nav-menu-container navbar-nav offset-md-4">
             <li>
               <a href="#" className="active">
