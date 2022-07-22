@@ -6,7 +6,6 @@ function Home() {
   return (
     <>
       <Navbar />
-
       <main>
         <div className="home-container">
           <div className="home-card">
