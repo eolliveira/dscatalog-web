@@ -1,18 +1,35 @@
 import './style.css';
+import 'bootstrap/js/src/collapse.js';
 
 function Navbar() {
   return (
-    //nav some ano breakpoint informado
-    <nav className="bg-primary navbar navbar-expand-md">
+    <nav className="bg-primary navbar navbar-expand-md navbar-dark">
       <div className="nav-container container-fluid">
         <a href="#" className="nav-logo-text navbar-brand">
           <h4>App Catalog</h4>
         </a>
 
-        <div className="nav-menu collapse navbar-collapse">
+        <button
+          className="navbar-toggler bg-primary"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#dscatalog-navbar"
+          aria-controls="dscatalog-navbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div
+          className="nav-menu collapse navbar-collapse"
+          id="dscatalog-navbar"
+        >
           <ul className="nav-menu-container navbar-nav offset-md-4">
             <li>
-              <a href="#" className='active'>HOME</a>
+              <a href="#" className="active">
+                HOME
+              </a>
             </li>
             <li>
               <a href="#">CATÁLOGO</a>
