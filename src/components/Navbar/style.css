@@ -1,0 +1,39 @@
+nav {
+    display: flex;
+    width: 100%;
+}
+
+.nav-container {
+    display: flex;
+    width: 944px;
+    margin: 0 auto;
+    border: solid red 2px;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-container {
+
+
+}
+
+.title-container a {
+    font-size: 24px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 1);
+    text-decoration: none;
+}
+
+.menu-container {
+    display: flex;
+    margin: 0;
+}
+
+.nav-item {
+    list-style-type: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 1);
+    margin: 0 40px 0 40px;
+}
