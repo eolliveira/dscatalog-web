@@ -2,21 +2,22 @@ import './style.css';
 
 function Navbar() {
   return (
-    <nav className="bg-primary">
-      <div className="nav-container">
-        <a href="#" className="title-container">
-          <h4>DS Catalog</h4>
+    //nav some ano breakpoint informado
+    <nav className="bg-primary navbar navbar-expand-md">
+      <div className="nav-container container-fluid">
+        <a href="#" className="nav-logo-text navbar-brand">
+          <h4>App Catalog</h4>
         </a>
 
-        <div>
-          <ul className="menu-container">
-            <li className="nav-item">
-              <a href="#">HOME</a>
+        <div className="nav-menu collapse navbar-collapse">
+          <ul className="nav-menu-container navbar-nav offset-md-4">
+            <li>
+              <a href="#" className='active'>HOME</a>
             </li>
-            <li className="nav-item">
+            <li>
               <a href="#">CATÁLOGO</a>
             </li>
-            <li className="nav-item">
+            <li>
               <a href="#">ADMIN</a>
             </li>
           </ul>
@@ -27,24 +28,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
-<nav className="bg-primary">
-  <div>
-    <a href="link">
-      <h4>DS Catalog</h4>
-    </a>
-    <div>
-      <ul>
-        <li>
-          <a href="link">HOME</a>
-        </li>
-        <li>
-          <a href="link">CATÁLOGO</a>
-        </li>
-        <li>
-          <a href="link">ADMIN</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>;
