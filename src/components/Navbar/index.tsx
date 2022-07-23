@@ -6,7 +6,7 @@ function Navbar() {
     <nav className="bg-primary navbar navbar-expand-md navbar-dark">
       <div className="nav-container container-fluid">
         <a href="#" className="nav-logo-text navbar-brand">
-          <h4>App Catalog</h4>
+          <h4>DS Catalog</h4>
         </a>
 
         <button

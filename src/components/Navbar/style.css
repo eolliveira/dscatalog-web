@@ -1,9 +1,10 @@
 .nav-container {
-  padding: 20px;
+  /* padding: 20px; */
 }
 
-.nav-logo-text {
+.nav-logo-text h4 {
   /* margin-left: 20px; */
+  font-size: 18px;
   color: #ffffff;
 }
 
@@ -11,6 +12,10 @@
   display: flex;
   /* width: 380px; */
   /* justify-content: space-around; */
+}
+
+#dscatalog-navbar.colapsing {
+  /* position: absolute; */
 }
 
 .active {
