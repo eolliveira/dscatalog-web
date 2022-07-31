@@ -14,8 +14,10 @@
   /* justify-content: space-around; */
 }
 
-#dscatalog-navbar.colapsing {
-  /* position: absolute; */
+.nav-menu-container a:hover {
+  color: #ffffff;
+  /* width: 380px; */
+  /* justify-content: space-around; */
 }
 
 .active {

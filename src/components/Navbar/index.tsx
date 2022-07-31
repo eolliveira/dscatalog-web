@@ -24,9 +24,7 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="dscatalog-navbar">
           <ul className="nav-menu-container navbar-nav offset-md-4">
             <li>
-              <a href="#" className="active">
-                HOME
-              </a>
+              <a href="#" className="active">HOME</a>
             </li>
             <li>
               <a href="#">CATÁLOGO</a>

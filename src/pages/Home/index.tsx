@@ -24,7 +24,7 @@ function Home() {
               <a href="#" className="home-btn-container">
                 <div className="home-btn-content"></div>
 
-                <h3>INICIE AGORA SUA BUSCA</h3>
+                  <h3>INICIE AGORA SUA BUSCA</h3>
 
                 <div className="home-btn-arrow">
                   <img src={arrow} alt="" />
