@@ -1,41 +1,29 @@
-import Navbar from '../../components/Navbar';
 import './style.css';
-import mainImage from '../../assets/img/main-image.svg';
-import arrow from '../../assets/img/arrow.svg';
+import { ReactComponent as MainImage } from '../../assets/img/main-image.svg';
+import ButtonIcon from '../../components/ButtonIcon';
 
-function Home() {
+const Home = () => {
   return (
-    <>
-      <Navbar />
-      <main>
-        <div className="home-container">
-          <div className="home-card-container">
-            <div className="home-card">
-              <img src={mainImage} alt="#" />
-              <h2>Conheça o melhor catálogo de produtos</h2>
-
-              <p>
-                Ajudaremos você a encontrar os <br />
-                melhores produtos disponíveis
-                <br />
-                no mercado.
-              </p>
-
-              <a href="#" className="home-btn-container">
-                <div className="home-btn-content"></div>
-
-                  <h3>INICIE AGORA SUA BUSCA</h3>
-
-                <div className="home-btn-arrow">
-                  <img src={arrow} alt="" />
-                </div>
-              </a>
+    <main>
+      <div className="home-container">
+        <div className="home-card base-card">
+          <div className="home-card-content-container">
+            <h1>Conheça o melhor catálogo de produtos</h1>
+            <p>
+              Ajudaremos você a encontrar os melhores produtos disponíveis no
+              mercado.
+            </p>
+            <div className='home-card-content-btn'>
+            <ButtonIcon />
             </div>
           </div>
+          <div className="home-card-image-container">
+            <MainImage />
+          </div>
         </div>
-      </main>
-    </>
+      </div>
+    </main>
   );
-}
+};
 
 export default Home;

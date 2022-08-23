@@ -1,0 +1,26 @@
+.product-card {
+    margin: 10px;
+}
+
+.product-card-top {
+    text-align: center;
+    border-bottom: 1px solid #E1E1E1;
+}
+
+.product-card-top img {
+    width: 140px;
+    height: 140px;
+    margin: 15px;
+}
+
+.product-card-bottom {
+    padding: 15px 40px 10px 20px;
+}
+
+.product-card-bottom h6 {
+    max-width: 140px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #263238;
+    margin-bottom: 20px;
+}

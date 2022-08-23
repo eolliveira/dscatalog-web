@@ -1,0 +1,16 @@
+.product-price-container {
+    display: flex;
+}
+
+.product-price-coin {
+    margin: 6px 8px 0px 0px; 
+    color: #9E9E9E;
+    font-size: 18px;
+}
+ 
+.product-price-price {
+    color: #407BFF;
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0;
+}
