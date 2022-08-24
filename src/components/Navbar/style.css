@@ -55,3 +55,8 @@
     margin-right: 6em;
   }
 }
+
+.navbar-dark .navbar-toggler {
+    color: transparent;
+    border-color: hsla(0,0%,100%,.1);
+}
