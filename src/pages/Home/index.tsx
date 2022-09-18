@@ -14,7 +14,7 @@ const Home = () => {
               mercado.
             </p>
             <div className='home-card-content-btn'>
-            <ButtonIcon />
+            <ButtonIcon text='Inicie agora sua busca' />
             </div>
           </div>
           <div className="home-card-image-container">
