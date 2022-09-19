@@ -1,6 +1,10 @@
 import './style.css'
 
-const ProductPrice = () => {
+type Props = {
+  price: number;
+}
+
+const ProductPrice = ( { price } : Props ) => {
   return (
     <div className="product-price-container">
         <p className='product-price-coin'>R$</p>
