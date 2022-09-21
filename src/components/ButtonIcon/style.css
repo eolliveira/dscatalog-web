@@ -4,11 +4,17 @@
 }
 
 .btn-text {
+  display: flex;
+  align-items: center;
   color: white;
   font-size: 12px;
   border-radius: 10px 0px 0px 10px;
   text-transform: uppercase;
   font-weight: bold;
+}
+
+.btn-text:hover {
+  color: white;
 }
 
 .btn-text h6 {

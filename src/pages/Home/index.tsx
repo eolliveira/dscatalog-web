@@ -1,6 +1,7 @@
 import './style.css';
 import { ReactComponent as MainImage } from '../../assets/img/main-image.svg';
 import ButtonIcon from '../../components/ButtonIcon';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -13,8 +14,10 @@ const Home = () => {
               Ajudaremos você a encontrar os melhores produtos disponíveis no
               mercado.
             </p>
-            <div className='home-card-content-btn'>
-            <ButtonIcon text='Inicie agora sua busca' />
+            <div className="home-card-content-btn">
+              <Link to="/products">
+                <ButtonIcon text="Inicie agora sua busca" />
+              </Link>
             </div>
           </div>
           <div className="home-card-image-container">
