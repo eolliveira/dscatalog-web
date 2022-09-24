@@ -8,12 +8,12 @@ const ProductDetails = () => {
   return (
     <div className="product-details-container">
       <div className="product-details-card base-card">
-        <div className="product-details-btn-voltar">
-          <Link to="/products">
+        <Link to="/products">
+          <div className="product-details-btn-voltar">
             <ArrowImg />
             <h2>VOLTAR</h2>
-          </Link>
-        </div>
+          </div>
+        </Link>
         <div className="row product-details-product-container">
           <div className="product-details-product col-xl-6">
             <div className="product-details-img">

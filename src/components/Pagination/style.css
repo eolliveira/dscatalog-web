@@ -1,0 +1,41 @@
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pagination-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  background-color: #c7c7c7;
+  color: #ffffff;
+}
+
+.pagination-item.active {
+  background: #407bff;
+
+}
+
+.arrow-inverse {
+  transform: rotate(-180deg);  
+}
+
+.arrow-active {
+  width: 10px;
+  height: 20px;
+  color: rgba(64, 123, 255, 1);
+}
+
+.arrow-inactive {
+  width: 10px;
+  height: 20px;
+  color: red;
+}
