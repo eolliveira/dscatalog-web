@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <nav className="bg-primary navbar navbar-expand-md navbar-dark fixed-top">
       <div className="nav-container container-fluid">
-        <Link to='/' className="nav-logo-text navbar-brand">
+        <Link to="/" className="nav-logo-text navbar-brand">
           <h4>DS Catalog</h4>
         </Link>
 
@@ -26,19 +26,25 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="dscatalog-navbar">
           <ul className="nav-menu-container navbar-nav offset-md-4">
             <li>
-              <NavLink to='/' >HOME</NavLink>
+              <NavLink to='/' className="nav-menu-item">
+                HOME
+              </NavLink>
             </li>
             <li>
-              <NavLink to='/products' >CATÁLOGO</NavLink>
+              <NavLink to='/products' className="nav-menu-item">
+                CATÁLOGO
+              </NavLink>
             </li>
             <li>
-              <NavLink to='/admin' >ADMIN</NavLink>
+              <NavLink to='/admin' className="nav-menu-item">
+                ADMIN
+              </NavLink>
             </li>
           </ul>
         </div>
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;

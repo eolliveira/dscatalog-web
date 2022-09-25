@@ -57,12 +57,9 @@ const Catalog = () => {
         </div>
       </div>
 
-      <div className='row catalog-pagination'>
+      <div className="row catalog-pagination">
         <Pagination />
       </div>
-
-
-
     </div>
   );
 };

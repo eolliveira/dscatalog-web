@@ -1,6 +1,6 @@
 import './assets/styles/custom.scss';
 import './App.css';
-import Routes from './RoutesMain';
+import Routes from './Routes';
 
 function App() {
   return <Routes />;
