@@ -1,10 +1,34 @@
-import ProductImg from '../../assets/img/product-card.png';
 import ProductPrice from '../../components/ProductPrice';
 import { ReactComponent as ArrowImg } from '../../assets/img/arrow-left.svg';
 import './style.css';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Product } from '../../types/Product';
+import axios from 'axios';
+import { baseUrl } from '../../http/requests';
 
 const ProductDetails = () => {
+  let [product, setProduct] = useState<Product>();
+
+  type urlParams = {
+    productId : string
+  }
+
+  //useParamns -> hook do reactRouter Dom, para pegar o parametro da url
+  const { productId } = useParams<urlParams>();
+
+
+  //(useEffect) para ser atualizado ao iniciar o componente apenas, ou com base nos obj monitorados
+  useEffect(() => {
+
+    //retona uma promisse(assinc)
+    axios.get(`${baseUrl}/products/${productId}`).then((response) => {
+      setProduct(response.data);
+    });
+  }, [productId]); // lista estados que serão monitorados 
+
+
+
   return (
     <div className="product-details-container">
       <div className="product-details-card base-card">
@@ -17,21 +41,18 @@ const ProductDetails = () => {
         <div className="row product-details-product-container">
           <div className="product-details-product col-xl-6">
             <div className="product-details-img">
-              <img src={ProductImg} alt="Imagem do Produto" />
+              <img src={product?.imgUrl} alt="Imagem do Produto" />
             </div>
             <div className="product-details-text">
-              <h2>Computador Desktop - Intel Core i7</h2>
-              <ProductPrice price={54887} />
+              <h2>{product?.name}</h2>
+              {/* se product for indefined, não passa o valor */}
+              {product && <ProductPrice price={product?.price} />}
             </div>
           </div>
           <div className="product-details-description col-xl-6">
-            <h3>Descrição do Produto</h3>
+            <h3>Descrição</h3>
             <p>
-              Seja um mestre em multitarefas com a capacidade para exibir quatro
-              aplicativos simultâneos na tela. A tela está ficando abarrotada?
-              Crie áreas de trabalho virtuais para obter mais espaço e trabalhar
-              com os itens que você deseja. Além disso, todas as notificações e
-              principais configurações
+              {product?.description}
             </p>
           </div>
         </div>
