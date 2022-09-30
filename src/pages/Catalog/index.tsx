@@ -9,10 +9,12 @@ import { AxiosParams } from '../../types/vendor/axios';
 import { baseUrl } from '../../http/requests';
 
 import './style.css';
+import CardLoader from './CardLoader';
 
 const Catalog = () => {
   //estado do tipo page de Product
   const [page, setPage] = useState<SpringPage<Product>>();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const params: AxiosParams = {
@@ -25,10 +27,12 @@ const Catalog = () => {
       },
     };
 
-    axios(params).then((response) => {
-      setPage(response.data);
-      console.log(response.data);
-    });
+    setIsLoading(true);
+    axios(params)
+      .then((response) => {
+        setPage(response.data);
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
   return (
@@ -38,14 +42,18 @@ const Catalog = () => {
       </div>
 
       <div className="row">
-        {page?.content.map(product => (
-          <div className="col-sm-6 col-md-4 col-lg-3" key={product.id}>
-            <Link to={`/products/${product.id}`}>
-              {/* deve-se informar uma chave unica para os elemento de uma coleção */}
-              <ProductCard product={product} />
-            </Link>
-          </div>
-        ))}
+        {isLoading ? (
+          <CardLoader />
+        ) : (
+          page?.content.map((product) => (
+            <div className="col-sm-6 col-md-4 col-lg-3" key={product.id}>
+              <Link to={`/products/${product.id}`}>
+                {/* deve-se informar uma chave unica para os elemento de uma coleção */}
+                <ProductCard product={product} />
+              </Link>
+            </div>
+          ))
+        )}
       </div>
 
       <div className="row catalog-pagination">
