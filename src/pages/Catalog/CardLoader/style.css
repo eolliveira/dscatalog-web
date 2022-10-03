@@ -1,0 +1,5 @@
+.card-loader-container {
+  display: flex;
+  margin: 20px;
+  min-width: 250px;
+}

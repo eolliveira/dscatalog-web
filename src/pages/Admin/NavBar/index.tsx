@@ -3,8 +3,8 @@ import './style.css';
 
 const Navbar = () => {
   return (
-    <nav className="admin-nav-container">
-      <ul>
+    <nav>
+      <ul className="admin-nav-container">
         <li>
           <NavLink to="/admin/products" className="admin-nav-item">
             Produtos
