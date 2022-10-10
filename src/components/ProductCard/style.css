@@ -1,5 +1,6 @@
 .product-card {
-    margin: 10px;   
+    margin: 10px;
+    min-height: 300px;   
 }
 
 .product-card:hover {
