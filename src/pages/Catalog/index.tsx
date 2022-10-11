@@ -1,11 +1,10 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import Pagination from '../../components/Pagination';
 import ProductCard from '../../components/ProductCard';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
 import { SpringPage } from '../../types/vendor/spring';
-import { AxiosParams } from '../../types/vendor/axios';
 import { baseUrl } from '../../http/requests';
 
 import './style.css';
@@ -17,9 +16,11 @@ const Catalog = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const params: AxiosParams = {
+    //AxiosRequestConfig = tipo padrão do axios para passar configurações na requisição
+    const params: AxiosRequestConfig = {
       method: 'GET',
-      url: `${baseUrl}/products`,
+      baseURL: baseUrl,
+      url: '/products',
       //data = corpo da req
       params: {
         page: 0,
