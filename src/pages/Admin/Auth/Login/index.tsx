@@ -3,6 +3,7 @@ import ButtonIcon from '../../../../components/ButtonIcon';
 import { useForm } from 'react-hook-form';
 
 import './style.css';
+import { requestBackendLogin } from '../../../../http/requests';
 
 const Login = () => {
   //tipo dos dados do formulário
@@ -11,17 +12,24 @@ const Login = () => {
     password: string;
   };
 
-
   //register = registra os inputs dos formulário
   //handleSubmit = evento do submit do formulário
-
 
   //hook para monitorar o formulário
   const { register, handleSubmit } = useForm<FormData>();
 
   //recebe o tipo do formulário
   const onSubmit = (formData: FormData) => {
-    console.log(formData);
+    
+    //retorna uma promisse(assync)
+    requestBackendLogin(formData)
+      .then((response) => {
+        console.log('SUCESSO');
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -52,7 +60,7 @@ const Login = () => {
           Esqueci a senha
         </Link>
         <button className="login-submit">
-          <ButtonIcon  text="Fazer login" />
+          <ButtonIcon text="Fazer login" />
         </button>
         <div className="signup-container">
           <span className="not-registered">Não tem Cadastro?</span>
