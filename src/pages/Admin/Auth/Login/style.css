@@ -36,6 +36,7 @@
 .login-submit {
   margin-bottom: 20px;
   width: 100%;
+  border: none;
 }
 
 .not-registered {
