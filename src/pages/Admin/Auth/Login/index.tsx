@@ -16,11 +16,10 @@ const Login = () => {
   //handleSubmit = evento do submit do formulário
 
   //hook para monitorar o formulário
-  const { register, handleSubmit } = useForm<FormData>();
+  const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
 
   //recebe o tipo do formulário
   const onSubmit = (formData: FormData) => {
-    
     //retorna uma promisse(assync)
     requestBackendLogin(formData)
       .then((response) => {
@@ -40,22 +39,32 @@ const Login = () => {
         <div className="mb-4">
           <input
             //registra input para ser monitorado pelo hook(deve ser igual ao name)
-            {...register('username')}
+            {...register('username', {
+              required: "Campo requerido"
+            })}
             type="text"
             className="form-control base-input"
             placeholder="Email"
             name="username"
           />
+          {/* mensagem de errro monitorada pelo Hook Form */}
+          <div className="invalid-feedback d-block">{errors.username?.message}</div>
         </div>
+
         <div className="mb-2">
           <input
-            {...register('password')}
+            {...register('password', {
+              required: "Campo requerido"
+            })}
             type="password"
             className="form-control base-input "
             placeholder="Password"
             name="password"
           />
+          {/* mensagem de errro monitorada pelo Hook Form */}
+          <div className="invalid-feedback d-block">{errors.password?.message}</div>
         </div>
+
         <Link to="/admin/auth/recover" className="login-link-recover">
           Esqueci a senha
         </Link>
