@@ -1,11 +1,11 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import { AxiosRequestConfig } from 'axios';
 import Pagination from '../../components/Pagination';
 import ProductCard from '../../components/ProductCard';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
 import { SpringPage } from '../../types/vendor/spring';
-import { baseUrl } from '../../http/requests';
+import { requestBackend } from '../../http/requests';
 
 import './style.css';
 import CardLoader from './CardLoader';
@@ -19,7 +19,6 @@ const Catalog = () => {
     //AxiosRequestConfig = tipo padrão do axios para passar configurações na requisição
     const params: AxiosRequestConfig = {
       method: 'GET',
-      baseURL: baseUrl,
       url: '/products',
       //data = corpo da req
       params: {
@@ -29,7 +28,8 @@ const Catalog = () => {
     };
 
     setIsLoading(true);
-    axios(params)
+    //faz requisição passando parametros
+    requestBackend(params)
       .then((response) => {
         setPage(response.data);
       })

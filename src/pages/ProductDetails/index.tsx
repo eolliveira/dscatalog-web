@@ -4,8 +4,8 @@ import './style.css';
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
-import axios from 'axios';
-import { baseUrl } from '../../http/requests';
+import axios, { AxiosRequestConfig } from 'axios';
+import { baseUrl, requestBackend } from '../../http/requests';
 import ProductLoader from './ProductLoader';
 
 const ProductDetails = () => {
@@ -21,10 +21,14 @@ const ProductDetails = () => {
 
   //(useEffect) para ser atualizado ao iniciar o componente apenas, ou com base nos obj monitorados
   useEffect(() => {
-    //retona uma promisse(assinc)
     setIsLoading(true);
-    axios
-      .get(`${baseUrl}/products/${productId}`)
+
+    const params: AxiosRequestConfig = {
+      method: 'GET',
+      url: `/products/${productId}`,
+    };
+
+    requestBackend(params)
       .then((response) => {
         setProduct(response.data);
       })
