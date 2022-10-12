@@ -40,7 +40,11 @@ const Login = () => {
           <input
             //registra input para ser monitorado pelo hook(deve ser igual ao name)
             {...register('username', {
-              required: "Campo requerido"
+              required: "Campo requerido",
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'Email inválido'
+              }
             })}
             type="text"
             className="form-control base-input"
