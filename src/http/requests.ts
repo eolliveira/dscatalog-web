@@ -1,5 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
+import jwtDecode from 'jwt-decode';
 import qs from 'qs';
+import { TokenData } from '../types/TokenData';
 import history from '../util/history';
 
 export const baseUrl = 'http://localhost:8080';
@@ -76,8 +78,6 @@ export const requestBackend = (config: AxiosRequestConfig) => {
   return axios({ ...config, baseURL: baseUrl, headers });
 };
 
-
-
 // Add a request interceptor
 axios.interceptors.request.use(
   function (config) {
@@ -109,3 +109,13 @@ axios.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+//metodo para decodificar token e devolve obj tokenData(pode retornar o tipo, ou undefined)
+export const getTokenData = (): TokenData | undefined => {
+  try{
+    return jwtDecode(getAuthData().access_token) as TokenData;
+  }
+  catch(error) {
+    return undefined;
+  }
+};

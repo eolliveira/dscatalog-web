@@ -1,6 +1,6 @@
 import { AxiosRequestConfig } from 'axios';
 import { useEffect, useState } from 'react';
-import { requestBackend } from '../../../http/requests';
+import { getTokenData, requestBackend } from '../../../http/requests';
 import { User } from '../../../types/User';
 import { SpringPage } from '../../../types/vendor/spring';
 
@@ -20,6 +20,13 @@ const Users = () => {
 
     requestBackend(params).then((response) => {
       setPage(response.data);
+
+
+
+
+      ///////////TESTE
+      console.log(getTokenData());
+      
     });
   }, []);
 
