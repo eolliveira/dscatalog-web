@@ -1,14 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import ButtonIcon from '../../../../components/ButtonIcon';
 import { useForm } from 'react-hook-form';
 
 import './style.css';
-import { getAuthData, requestBackendLogin, saveAuthData } from '../../../../http/requests';
+import { requestBackendLogin, saveAuthData } from '../../../../http/requests';
 import { useState } from 'react';
 
 const Login = () => {
   //monitora o erro de login
   const [error, setError] = useState(false);
+
+  //hook para fazer o redirecionamento de rotas na aplicação
+  const history = useHistory();
 
   //tipo dos dados do formulário
   type FormData = {
@@ -16,15 +19,15 @@ const Login = () => {
     password: string;
   };
 
-  //register = registra os inputs dos formulário
-  //handleSubmit = evento do submit do formulário
-
   //hook para monitorar o formulário
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
+
+  //register = registra os inputs dos formulário
+  //handleSubmit = evento do submit do formulário
 
   //recebe o tipo do formulário
   const onSubmit = (formData: FormData) => {
@@ -35,6 +38,9 @@ const Login = () => {
         saveAuthData(response.data);
         setError(false);
         console.log('SUCESSO');
+
+        //faz redirecionamento para a página de Login
+        history.push('/admin');
       })
       .catch((error) => {
         setError(true);

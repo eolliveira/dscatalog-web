@@ -4,8 +4,8 @@ import './style.css';
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
-import axios, { AxiosRequestConfig } from 'axios';
-import { baseUrl, requestBackend } from '../../http/requests';
+import { AxiosRequestConfig } from 'axios';
+import { requestBackend } from '../../http/requests';
 import ProductLoader from './ProductLoader';
 
 const ProductDetails = () => {
