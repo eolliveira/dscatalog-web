@@ -119,3 +119,11 @@ export const getTokenData = (): TokenData | undefined => {
     return undefined;
   }
 };
+
+
+//função que identifica se o usuário esta autênticado
+export const isAuthenticated = () : boolean => {
+  const tokenData = getTokenData()
+  //verifica se tokenData não é undefined e se o token não esta expirado
+  return (tokenData && tokenData?.exp * 1000 > Date.now()) ? true : false;
+}

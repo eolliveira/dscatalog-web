@@ -2,12 +2,17 @@ import './style.css';
 import { ReactComponent as MainImage } from '../../assets/img/main-image.svg';
 import ButtonIcon from '../../components/ButtonIcon';
 import { Link } from 'react-router-dom';
+import { isAuthenticated } from '../../http/requests';
 
 const Home = () => {
   return (
     <main>
       <div className="home-container">
         <div className="home-card base-card">
+
+          {/* teste */}
+          {isAuthenticated() ? 'esta autenticado' : 'não autenticado'}
+        
           <div className="home-card-content-container">
             <h1>Conheça o melhor catálogo de produtos</h1>
             <p>

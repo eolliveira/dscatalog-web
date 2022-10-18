@@ -1,4 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
+import PrivateRoute from '../../components/PrivateRoute';
 import Navbar from './NavBar';
 import './style.css';
 import Users from './Users';
@@ -10,15 +11,15 @@ const Admin = () => {
       <div className="admin-content">
         {/* Rotas aninhadas */}
         <Switch>
-          <Route path="/admin/products">
+          <PrivateRoute path="/admin/products">
             <h1>CRUD PRODUCTS</h1>
-          </Route>
-          <Route path="/admin/categories">
+          </PrivateRoute>
+          <PrivateRoute path="/admin/categories">
             <h1>CRUD CATEGORIES</h1>
-          </Route>
-          <Route path="/admin/users">
+          </PrivateRoute>
+          <PrivateRoute path="/admin/users">
             <Users />
-          </Route>
+          </PrivateRoute>
         </Switch>
       </div>
     </div>
