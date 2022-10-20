@@ -26,6 +26,34 @@
   margin-left: 15px;
 }
 
+
+.nav-login a {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.nav-login a {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.nav-login h2 {
+  display: none;
+  font-size: 16px;
+  color: white;
+  margin: 0 0 0 15px;
+}
+
+.nav-login-user {
+  display: none;
+  font-size: 16px;
+  color: white;
+}
+
 @media (min-width: 576px) {
   .nav-logo-text h4 {
     font-size: 20px;
@@ -37,10 +65,22 @@
     font-size: 24px;
   }
 
+  .nav-login h2 {
+    display: unset;
+  }
+  
+
   .nav-menu-container li {
     margin-top: 0px;
   }
 }
+
+@media (min-width: 992px) {
+  .nav-login-user {
+    display: unset;
+  }
+}
+
 
 @media (min-width: 1440px) {
   .nav-menu-container li {

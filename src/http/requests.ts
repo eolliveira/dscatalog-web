@@ -65,6 +65,11 @@ export const getAuthData = () => {
   return JSON.parse(localStorage.getItem('authKey') ?? '{}') as LoginResponse;
 };
 
+export const removeAuthData = () => {
+  localStorage.removeItem('authKey');
+};
+
+
 export const requestBackend = (config: AxiosRequestConfig) => {
   //se solicitar autenticação
   const headers = config.withCredentials
