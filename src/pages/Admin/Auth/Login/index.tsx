@@ -1,12 +1,18 @@
 import { Link, useHistory } from 'react-router-dom';
 import ButtonIcon from '../../../../components/ButtonIcon';
 import { useForm } from 'react-hook-form';
+import { useContext } from 'react';
 
 import './style.css';
-import { requestBackendLogin, saveAuthData } from '../../../../http/requests';
+import { getTokenData, requestBackendLogin, saveAuthData } from '../../../../http/requests';
 import { useState } from 'react';
+import { AuthContext } from '../../../../AuthContext';
 
 const Login = () => {
+
+  //instancia o estado de autenticação global da aplicação
+  const { setAuthContextData } = useContext(AuthContext);
+
   //monitora o erro de login
   const [error, setError] = useState(false);
 
@@ -37,7 +43,12 @@ const Login = () => {
         //passa dados de autenticação para serem salvos no LocalStorage
         saveAuthData(response.data);
         setError(false);
-        console.log('SUCESSO');
+
+        //altera o estado global da aplicação
+        setAuthContextData({
+          authenticated: true,
+          tokenData: getTokenData(),
+        });
 
         //faz redirecionamento para a página de Login
         history.push('/admin');

@@ -1,41 +1,38 @@
-import './style.css';
 import 'bootstrap/js/src/collapse.js';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { TokenData } from '../../types/TokenData';
 import { getTokenData, isAuthenticated, removeAuthData } from '../../http/requests';
 import history from '../../util/history';
+import { AuthContext } from '../../AuthContext';
+
+import './style.css';
 
 //armazena informação se o usuário esta logado 
 const Navbar = () => {
-  type AuthData = {
-    authenticated: boolean;
-    tokenData?: TokenData;
-  };
 
-  const [authData, setAuthData] = useState<AuthData>({
-    authenticated: false,
-  });
+  //instancia o estado de autenticação global da aplicação
+  const { authContextData, setAuthContextData } = useContext(AuthContext);
 
   useEffect(() => {
     if (isAuthenticated()) {
       //se estiver autenticado, armazena os dados do token
-      setAuthData({
+      setAuthContextData({
         authenticated: true,
         tokenData: getTokenData(),
       });
     } else {
-      setAuthData({
+      setAuthContextData({
         authenticated: false,
       });
     }
-  }, []);
+    //passando função setAuthContextData, porque se ela for executada em entro componente, executa novamente aqui
+  }, [setAuthContextData]);
 
   const handleLoginClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     removeAuthData();
-    setAuthData({
+    setAuthContextData({
       authenticated: false
     });
     history.replace('/');
@@ -69,7 +66,7 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink to="/products" className="nav-menu-item">
-                CATÁLOGO
+                CATÁLOGOS
               </NavLink>
             </li>
             <li>
@@ -81,9 +78,9 @@ const Navbar = () => {
         </div>
 
         <div className='nav-login'>
-          {authData.authenticated ? (
+          {authContextData.authenticated ? (
             <a href="/" onClick={handleLoginClick}>
-              <span className='nav-login-user'>{authData.tokenData?.user_name}</span>
+              <span className='nav-login-user'>{authContextData.tokenData?.user_name}</span>
               <h2>LOGOUT</h2>
             </a>
           ) : (
