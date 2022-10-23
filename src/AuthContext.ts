@@ -13,7 +13,7 @@ export type AuthContextData = {
 //objeto do estado, e função que será sobreescrita para alterar o estado
 export type AuthContextType = {
     authContextData: AuthContextData;
-    setAuthContextData: (AuthContextData: AuthContextData) => void;
+    setAuthContextData: (authContextData: AuthContextData) => void;
 };
 
 //cria o contexto , ja informando o valor do objeto 

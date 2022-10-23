@@ -1,3 +1,7 @@
+.nav-container {
+  margin-left: 15px;
+}
+
 .nav-logo-text h4 {
   font-size: 18px;
   color: #ffffff;
@@ -20,18 +24,6 @@
 
 .nav-menu-item:hover {
   color: #ffffff;
-}
-
-.nav-container {
-  margin-left: 15px;
-}
-
-
-.nav-login a {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
 }
 
 .nav-login a {
@@ -68,7 +60,6 @@
   .nav-login h2 {
     display: unset;
   }
-  
 
   .nav-menu-container li {
     margin-top: 0px;
@@ -80,7 +71,6 @@
     display: unset;
   }
 }
-
 
 @media (min-width: 1440px) {
   .nav-menu-container li {

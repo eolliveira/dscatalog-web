@@ -13,9 +13,13 @@ const PrivateRoute = ({ path, children }: Props) => {
   return (
     <Route
       path={path}
-      render={() =>
+      render={({location}) =>
         //se usuário não estiver altenticado para acesar a rota, é redirecionado para tela de login
-        isAuthenticated() ? children : <Redirect to={'/admin/auth/login'} />
+        isAuthenticated() ? children : <Redirect to={{
+          pathname: '/admin/auth/login',
+          //guarda rota que faz a chamada
+          state: { from: location }
+        }} />
       }
     />
   );

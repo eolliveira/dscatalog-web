@@ -1,14 +1,34 @@
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import ButtonIcon from '../../../../components/ButtonIcon';
 import { useForm } from 'react-hook-form';
 import { useContext } from 'react';
 
 import './style.css';
-import { getTokenData, requestBackendLogin, saveAuthData } from '../../../../http/requests';
+import {
+  getTokenData,
+  requestBackendLogin,
+  saveAuthData,
+} from '../../../../http/requests';
 import { useState } from 'react';
 import { AuthContext } from '../../../../AuthContext';
 
+//tipo que casa com from do PrivateRoute , recebe location.state
+type LocationState = {
+  from: string;
+};
+
+//tipo dos dados do formulário
+type FormData = {
+  username: string;
+  password: string;
+};
+
 const Login = () => {
+
+  const location = useLocation<LocationState>();
+
+  //from recebe location, vindo do PrivateRoute
+  const { from } = location.state || { from: { pathname: '/admin' } }
 
   //instancia o estado de autenticação global da aplicação
   const { setAuthContextData } = useContext(AuthContext);
@@ -18,12 +38,6 @@ const Login = () => {
 
   //hook para fazer o redirecionamento de rotas na aplicação
   const history = useHistory();
-
-  //tipo dos dados do formulário
-  type FormData = {
-    username: string;
-    password: string;
-  };
 
   //hook para monitorar o formulário
   const {
@@ -50,8 +64,9 @@ const Login = () => {
           tokenData: getTokenData(),
         });
 
-        //faz redirecionamento para a página de Login
-        history.push('/admin');
+        //faz redirecionamento para a página que fez a chamada anteriormente do recurso
+        //replace para excluir rota de login da pilha
+        history.replace(from);
       })
       .catch((error) => {
         setError(true);
