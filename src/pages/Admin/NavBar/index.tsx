@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import { hasAnyHole } from '../../../http/requests';
 import './style.css';
 
 const Navbar = () => {
@@ -15,11 +16,14 @@ const Navbar = () => {
             Categorias
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/admin/users" className="admin-nav-item">
-            Usuários
-          </NavLink>
-        </li>
+        {/* SE USUÁRIO LOGADO FOR ADMIN */}
+        {hasAnyHole(['ROLE_ADMIN']) && (
+          <li>
+            <NavLink to="/admin/users" className="admin-nav-item">
+              Usuários
+            </NavLink>
+          </li>
+        )}
       </ul>
     </nav>
   );
