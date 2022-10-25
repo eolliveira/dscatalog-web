@@ -107,7 +107,7 @@ axios.interceptors.response.use(
     // Do something with response error
 
     //redireciona para tela de login
-    if (error.response.status === 401 || error.response.status === 403) {
+    if (error.response.status === 401) {
       history.push('/admin/auth');
     }
 

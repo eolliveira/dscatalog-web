@@ -1,25 +1,39 @@
 import { Redirect, Route } from 'react-router-dom';
-import { isAuthenticated } from '../../http/requests';
+import { hasAnyHole, isAuthenticated } from '../../http/requests';
+import { Role } from '../../types/Role';
 
 type Props = {
   //caminho da que sera verificada
   path: string;
   //permite conponente possuir 'filhos'
   children: React.ReactNode;
+  //recebe lista de roles
+  roles?: Role[];
 };
 
 //rotas privadas, que irão requerir autenticação para serem acessadas
-const PrivateRoute = ({ path, children }: Props) => {
+const PrivateRoute = ({ path, children, roles = [] }: Props) => {
   return (
     <Route
       path={path}
-      render={({location}) =>
-        //se usuário não estiver altenticado para acesar a rota, é redirecionado para tela de login
-        isAuthenticated() ? children : <Redirect to={{
-          pathname: '/admin/auth/login',
-          //guarda rota que faz a chamada
-          state: { from: location }
-        }} />
+      render={({ location }) =>
+        //se não estiver autenticado
+        !isAuthenticated() ? (
+          <Redirect
+            to={{
+              pathname: '/admin/auth/login',
+              //guarda rota que faz a chamada
+              state: { from: location },
+            }}
+          />
+        ) : //se não tiver role
+        !hasAnyHole(roles) ? (
+          //redireciona para tela de CRUD de Produtos
+          <Redirect to={'/admin/products'} />
+        ) : (
+          //mostra componente filho
+          children
+        )
       }
     />
   );

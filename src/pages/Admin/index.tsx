@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import PrivateRoute from '../../components/PrivateRoute';
 import Navbar from './NavBar';
 import './style.css';
@@ -17,7 +17,8 @@ const Admin = () => {
           <PrivateRoute path="/admin/categories">
             <h1>CRUD CATEGORIES</h1>
           </PrivateRoute>
-          <PrivateRoute path="/admin/users">
+                  {/* informa que somente usuário com perfil ADMIN vão acessar a rota */}
+          <PrivateRoute path="/admin/users" roles={['ROLE_ADMIN']}>
             <Users />
           </PrivateRoute>
         </Switch>
