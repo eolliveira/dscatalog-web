@@ -35,15 +35,12 @@
 }
 
 @media (min-width: 576px) {
-  
-.btn-text h6 {
-  font-size: 18px;
-}
+  .btn-text h6 {
+    font-size: 18px;
+  }
 
-.btn-img {
-  width: 60px;
-  height: 60px;
-}
-
-
+  .btn-img {
+    width: 60px;
+    height: 60px;
+  }
 }

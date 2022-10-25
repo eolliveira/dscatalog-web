@@ -22,11 +22,10 @@
 
 .pagination-item.active {
   background: #407bff;
-
 }
 
 .arrow-inverse {
-  transform: rotate(-180deg);  
+  transform: rotate(-180deg);
 }
 
 .arrow-active {

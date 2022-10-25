@@ -57,7 +57,7 @@
   font-size: 15px;
 }
 
-@media(min-width: 1440px) {
+@media (min-width: 1440px) {
   .login-card {
     padding: 50px;
   }

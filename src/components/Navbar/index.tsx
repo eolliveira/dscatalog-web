@@ -1,16 +1,19 @@
-import 'bootstrap/js/src/collapse.js';
 import { Link } from 'react-router-dom';
 import { useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { getTokenData, isAuthenticated, removeAuthData } from '../../http/requests';
+import {
+  getTokenData,
+  isAuthenticated,
+  removeAuthData,
+} from '../../http/requests';
 import history from '../../util/history';
 import { AuthContext } from '../../AuthContext';
 
+import 'bootstrap/js/src/collapse.js';
 import './style.css';
 
-//armazena informação se o usuário esta logado 
+//armazena informação se o usuário esta logado
 const Navbar = () => {
-
   //instancia o estado de autenticação global da aplicação
   const { authContextData, setAuthContextData } = useContext(AuthContext);
 
@@ -33,10 +36,10 @@ const Navbar = () => {
     event.preventDefault();
     removeAuthData();
     setAuthContextData({
-      authenticated: false
+      authenticated: false,
     });
     history.replace('/');
-  }
+  };
 
   return (
     <nav className="bg-primary navbar navbar-expand-md navbar-dark fixed-top">
@@ -77,14 +80,16 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className='nav-login'>
+        <div className="nav-login">
           {authContextData.authenticated ? (
             <a href="/" onClick={handleLoginClick}>
-              <span className='nav-login-user'>{authContextData.tokenData?.user_name}</span>
+              <span className="nav-login-user">
+                {authContextData.tokenData?.user_name}
+              </span>
               <h2>LOGOUT</h2>
             </a>
           ) : (
-            <Link to='/admin/auth'>
+            <Link to="/admin/auth">
               <h2>LOGIN</h2>
             </Link>
           )}

@@ -2,11 +2,11 @@ import { ReactComponent as ArrowImg } from '../../assets/img/arrow.svg';
 import './style.css';
 
 type Props = {
-  text : String;
-}
+  text: String;
+};
 
 //desestrutura text do obj Props
-const ButtonIcon = ({ text }: Props ) => {
+const ButtonIcon = ({ text }: Props) => {
   return (
     <div className="btn-container">
       <div className="btn-text btn btn-primary">

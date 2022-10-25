@@ -24,11 +24,10 @@ type FormData = {
 };
 
 const Login = () => {
-
   const location = useLocation<LocationState>();
 
   //from recebe location, vindo do PrivateRoute
-  const { from } = location.state || { from: { pathname: '/admin' } }
+  const { from } = location.state || { from: { pathname: '/admin' } };
 
   //instancia o estado de autenticação global da aplicação
   const { setAuthContextData } = useContext(AuthContext);
