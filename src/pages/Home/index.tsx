@@ -2,7 +2,7 @@ import './style.css';
 import { ReactComponent as MainImage } from '../../assets/img/main-image.svg';
 import ButtonIcon from '../../components/ButtonIcon';
 import { Link } from 'react-router-dom';
-import { hasAnyHole, isAuthenticated } from '../../http/requests';
+import { hasAnyHole, isAuthenticated } from '../../util/auth';
 
 const Home = () => {
   return (

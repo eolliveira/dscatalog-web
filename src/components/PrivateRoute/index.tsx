@@ -1,6 +1,6 @@
 import { Redirect, Route } from 'react-router-dom';
-import { hasAnyHole, isAuthenticated } from '../../http/requests';
 import { Role } from '../../types/Role';
+import { hasAnyHole, isAuthenticated } from '../../util/auth';
 
 type Props = {
   //caminho da que sera verificada

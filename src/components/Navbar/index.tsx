@@ -1,16 +1,13 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import {
-  getTokenData,
-  isAuthenticated,
-  removeAuthData,
-} from '../../http/requests';
 import history from '../../util/history';
 import { AuthContext } from '../../AuthContext';
 
 import 'bootstrap/js/src/collapse.js';
 import './style.css';
+import { getTokenData, isAuthenticated } from '../../util/auth';
+import { removeAuthData } from '../../util/storage';
 
 //armazena informação se o usuário esta logado
 const Navbar = () => {

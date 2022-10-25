@@ -1,8 +1,9 @@
 import { AxiosRequestConfig } from 'axios';
 import { useEffect, useState } from 'react';
-import { getTokenData, requestBackend } from '../../../http/requests';
+import { requestBackend } from '../../../http/requests';
 import { User } from '../../../types/User';
 import { SpringPage } from '../../../types/vendor/spring';
+import { getTokenData } from '../../../util/auth';
 
 const Users = () => {
   const [page, setPage] = useState<SpringPage<User>>();

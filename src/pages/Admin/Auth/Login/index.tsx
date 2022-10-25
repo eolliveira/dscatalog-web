@@ -4,13 +4,11 @@ import { useForm } from 'react-hook-form';
 import { useContext } from 'react';
 
 import './style.css';
-import {
-  getTokenData,
-  requestBackendLogin,
-  saveAuthData,
-} from '../../../../http/requests';
 import { useState } from 'react';
 import { AuthContext } from '../../../../AuthContext';
+import { requestBackendLogin } from '../../../../http/requests';
+import { saveAuthData } from '../../../../util/storage';
+import { getTokenData } from '../../../../util/auth';
 
 //tipo que casa com from do PrivateRoute , recebe location.state
 type LocationState = {

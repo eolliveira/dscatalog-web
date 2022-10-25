@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { hasAnyHole } from '../../../http/requests';
+import { hasAnyHole } from '../../../util/auth';
 import './style.css';
 
 const Navbar = () => {
