@@ -16,7 +16,7 @@ const Navbar = () => {
 
   useEffect(() => {
     if (isAuthenticated()) {
-      //se estiver autenticado, armazena os dados do token
+      //se estiver autenticado, altera o estado global
       setAuthContextData({
         authenticated: true,
         tokenData: getTokenData(),
@@ -79,12 +79,14 @@ const Navbar = () => {
 
         <div className="nav-login">
           {authContextData.authenticated ? (
-            <a href="/" onClick={handleLoginClick}>
+            <span className='nav-login-container'>
               <span className="nav-login-user">
                 {authContextData.tokenData?.user_name}
               </span>
-              <h2>LOGOUT</h2>
-            </a>
+              <a href="/" onClick={handleLoginClick}>
+                <h2>LOGOUT</h2>
+              </a>
+            </span>
           ) : (
             <Link to="/admin/auth">
               <h2>LOGIN</h2>

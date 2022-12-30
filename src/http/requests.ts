@@ -23,7 +23,7 @@ export const requestBackendLogin = (loginData: LoginData) => {
     Authorization: 'Basic ' + window.btoa(CLIENT_ID + ':' + CLIENT_SECRET),
   };
 
-  //gera urlEncoded referente ao obj
+  //converte obj recebido para urlEncoded
   const data = qs.stringify({
     ...loginData,
     grant_type: 'password',
@@ -48,6 +48,7 @@ export const requestBackend = (config: AxiosRequestConfig) => {
         ...config.headers,
         Authorization: 'Bearer ' + getAuthData().access_token,
       }
+      //passa headers que ja tinha 
     : config.headers;
 
   return axios({ ...config, baseURL: baseUrl, headers });

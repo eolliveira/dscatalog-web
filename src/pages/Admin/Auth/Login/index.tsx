@@ -30,6 +30,8 @@ const Login = () => {
   //instancia o estado de autenticação global da aplicação
   const { setAuthContextData } = useContext(AuthContext);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   //monitora o erro de login
   const [error, setError] = useState(false);
 
@@ -48,6 +50,7 @@ const Login = () => {
 
   //recebe o tipo do formulário
   const onSubmit = (formData: FormData) => {
+    setIsLoading(true);
     //retorna uma promisse(assync)
     requestBackendLogin(formData)
       .then((response) => {
@@ -62,12 +65,15 @@ const Login = () => {
         });
 
         //faz redirecionamento para a página que fez a chamada anteriormente do recurso
-        //replace para excluir rota de login da pilha
+        //replace para excluir rota de login(rota que fez a chamada) da pilha
         history.replace(from);
       })
       .catch((error) => {
         setError(true);
         console.log(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -79,7 +85,7 @@ const Login = () => {
         <div className="mb-4">
           {error && (
             <div className="alert alert-danger" role="alert">
-              Falha ao efetuar o Login, verifique suas credênciais
+              Falha ao efetuar o login, verifique suas credênciais!
             </div>
           )}
           <input
@@ -126,9 +132,19 @@ const Login = () => {
         <Link to="/admin/auth/recover" className="login-link-recover">
           Esqueci a senha
         </Link>
-        <button className="login-submit">
-          <ButtonIcon text="Fazer login" />
-        </button>
+
+        {isLoading ? (
+          <div className="text-center login-submit">
+            <div className="spinner-border">
+              <span className="sr-only"></span>
+            </div>
+          </div>
+        ) : (
+          <button className="login-submit">
+            <ButtonIcon text="Fazer login" />
+          </button>
+        )}
+
         <div className="signup-container">
           <span className="not-registered">Não tem Cadastro?</span>
           <Link to="/admin/auth/register" className="login-link-register">
