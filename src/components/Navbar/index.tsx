@@ -65,7 +65,7 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/products" className="nav-menu-item">
+              <NavLink to="/products" className="nav-menu-item active">
                 CATÁLOGOS
               </NavLink>
             </li>

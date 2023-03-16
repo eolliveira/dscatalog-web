@@ -7,19 +7,26 @@
   color: #ffffff;
 }
 
+.nav-logo-text h4:hover {
+  color: #ffffff;
+}
+
 .nav-menu-container {
   display: flex;
+  font-size: 18px;
+  justify-content: space-between;
 }
+
+.nav-menu-container a.active {
+  color: white;
+  font-weight: bold;
+}
+
 
 .nav-menu-item {
   margin-right: 4em;
   margin-top: 15px;
   color: rgba(255, 255, 255, 0.5);
-}
-
-.nav-menu-item.active {
-  color: white;
-  font-weight: bold;
 }
 
 .nav-menu-item:hover {
