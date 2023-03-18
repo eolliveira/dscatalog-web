@@ -65,7 +65,11 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
+<<<<<<< HEAD
               <NavLink to="/products" activeClassName='active' className="nav-menu-item">
+=======
+              <NavLink to="/products" className="nav-menu-item active">
+>>>>>>> 7961da8efcfb16431406df2082f04b7fef463fc2
                 CATÁLOGOS
               </NavLink>
             </li>

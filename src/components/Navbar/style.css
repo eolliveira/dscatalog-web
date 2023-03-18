@@ -7,14 +7,30 @@
   color: #ffffff;
 }
 
+<<<<<<< HEAD
 .nav-menu-container a.active {
   color: white;
   font-weight: bold;
 }
 
 .nav-menu-container{
-  display: flex;
+=======
+.nav-logo-text h4:hover {
+  color: #ffffff;
 }
+
+.nav-menu-container {
+>>>>>>> 7961da8efcfb16431406df2082f04b7fef463fc2
+  display: flex;
+  font-size: 18px;
+  justify-content: space-between;
+}
+
+.nav-menu-container a.active {
+  color: white;
+  font-weight: bold;
+}
+
 
 .nav-menu-item {
   margin-right: 4em;
