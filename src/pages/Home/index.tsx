@@ -2,7 +2,6 @@ import './style.css';
 import { ReactComponent as MainImage } from '../../assets/img/main-image.svg';
 import ButtonIcon from '../../components/ButtonIcon';
 import { Link } from 'react-router-dom';
-import { hasAnyHole } from '../../util/auth';
 
 const Home = () => {
   return (
