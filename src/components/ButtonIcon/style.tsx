@@ -1,4 +1,13 @@
-.btn-text {
+import styled from "styled-components";
+
+
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
+
+export const ButtonText = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
@@ -8,17 +17,23 @@
   text-transform: uppercase;
   font-weight: bold;
   justify-content: center;
-}
 
-.btn-text:hover {
-  color: white;
-}
+  &:hover {
+    color: white;
+  }
 
-.btn-text h6 {
-  font-size: 12px;
-}
+  h6 {
+    font-size: 12px;
+  }
 
-.btn-img {
+  @media (min-width: 576px) {
+    h6 {
+      font-size: 18px;
+    }
+  }
+`;
+
+export const ButtonImage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,15 +41,10 @@
   height: 50px;
   background: rgb(19, 83, 202);
   border-radius: 0px 10px 10px 0px;
-}
 
-@media (min-width: 576px) {
-  .btn-text h6 {
-    font-size: 18px;
-  }
-
-  .btn-img {
+  @media (min-width: 576px) {
     width: 60px;
     height: 60px;
   }
-}
+`;
+

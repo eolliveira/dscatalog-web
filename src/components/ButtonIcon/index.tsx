@@ -1,6 +1,5 @@
-import styled from 'styled-components';
 import { ReactComponent as ArrowImg } from '../../assets/img/arrow.svg';
-import './style.css';
+import { Container, ButtonText, ButtonImage } from './style';
 
 type Props = {
   text: String;
@@ -10,21 +9,14 @@ type Props = {
 const ButtonIcon = ({ text }: Props) => {
   return (
     <Container>
-      <div className="btn-text btn btn-primary">
+      <ButtonText className="btn btn-primary">
         <h6>{text}</h6>
-      </div>
-      <div className="btn-img">
+      </ButtonText>
+      <ButtonImage>
         <ArrowImg />
-      </div>
+      </ButtonImage>
     </Container>
   );
 };
 
 export default ButtonIcon;
-
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-`;
