@@ -7,6 +7,7 @@ import { Product } from '../../types/Product';
 import { AxiosRequestConfig } from 'axios';
 import { requestBackend } from '../../http/requests';
 import ProductLoader from './ProductLoader';
+import styled from 'styled-components';
 
 const ProductDetails = () => {
   let [product, setProduct] = useState<Product>();
@@ -38,38 +39,157 @@ const ProductDetails = () => {
   }, [productId]); // lista estados que serão monitorados
 
   return (
-    <div className="product-details-container">
+    <Container>
       {/* se isLoading for true  */}
       {isLoading ? (
         <ProductLoader />
       ) : (
-        <div className="product-details-card base-card">
+        <Card className="base-card">
           <Link to="/products">
-            <div className="product-details-btn-voltar">
+            <BackButton>
               <ArrowImg />
               <h2>VOLTAR</h2>
-            </div>
+            </BackButton>
           </Link>
-          <div className="row product-details-product-container">
-            <div className="product-details-product col-xl-6">
-              <div className="product-details-img">
+          <ProductContainer className="row">
+            <ProductData className="col-xl-6">
+              <ImageContainer >
                 <img src={product?.imgUrl} alt="Imagem do Produto" />
-              </div>
+              </ImageContainer>
               <div className="product-details-text">
                 <h2>{product?.name}</h2>
                 {/* se product for indefined, não passa o valor */}
                 {product && <ProductPrice price={product?.price} />}
               </div>
-            </div>
-            <div className="product-details-description col-xl-6">
+            </ProductData>
+            <ProductDescription className="col-xl-6">
               <h3>Descrição</h3>
               <p>{product?.description}</p>
-            </div>
-          </div>
-        </div>
+            </ProductDescription>
+          </ProductContainer>
+        </Card>
       )}
-    </div>
+    </Container>
   );
 };
 
 export default ProductDetails;
+
+const Container = styled.div`
+  padding: 20px;
+`;
+
+const Card = styled.div`
+  padding: 20px;
+  height: calc(100vh - 96px);
+`;
+
+const BackButton = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+
+  h2 {
+    margin-left: 15px;
+    font: 22px;
+    color: #263238;
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: #263238;
+  }
+`;
+
+const ProductContainer = styled.div`
+  margin: 8px;
+
+  @media (min-width: 1024px) {
+    .product-details-product-container {
+      margin: 18px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .product-details-product-container {
+      margin: 18px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .product-details-product-container {
+      display: flex;
+      align-items: unset;
+    }
+  }
+`;
+
+const ProductData = styled.div`
+  margin: 0;
+  padding: 0;
+
+  h2 {
+    font-size: 27px;
+  }
+
+  @media (min-width: 1024px) {
+    .product-details-product {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .product-details-product {
+      margin: 0;
+      padding: 0;
+    }
+  }
+`;
+
+const ProductDescription = styled.div`
+  padding: 20px;
+  border: 1px solid #e1e1e1;
+  border-radius: 20px;
+  margin-top: 30px;
+
+  h3 {
+    font-size: 18px;
+    color: #9e9e9e;
+    margin-bottom: 20px;
+  }
+
+  @media (min-width: 1200px) {
+    .product-details-description {
+      margin: 0;
+    }
+  }
+`;
+
+const ImageContainer = styled.div`
+  text-align: center;
+  border: 1px solid #e1e1e1;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  margin-right: 50px;
+
+  img {
+    max-width: 270px;
+    width: 100%;
+  }
+
+  @media (min-width: 1200px) {
+    .product-details-img {
+      margin-right: 50px;
+    }
+
+    @media (min-width: 1440px) {
+      .product-details-img {
+        margin-right: 50px;
+      }
+    }
+  }
+`;
+
+const Image = styled.div``;
