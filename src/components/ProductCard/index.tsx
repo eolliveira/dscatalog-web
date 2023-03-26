@@ -1,7 +1,6 @@
 import { Product } from '../../types/Product';
 import ProductPrice from '../ProductPrice';
-
-import './style.css';
+import { CardImage, CardName, ProductContainer } from './style';
 
 type Props = {
   product: Product;
@@ -9,15 +8,15 @@ type Props = {
 
 const ProductCard = ({ product }: Props) => {
   return (
-    <div className="product-card base-card">
-      <div className="product-card-top">
+    <ProductContainer className="base-card">
+      <CardImage>
         <img src={product.imgUrl} alt={product.name} />
-      </div>
-      <div className="product-card-bottom">
+      </CardImage>
+      <CardName>
         <h6>{product.name}</h6>
         <ProductPrice price={product.price} />
-      </div>
-    </div>
+      </CardName>
+    </ProductContainer>
   );
 };
 
