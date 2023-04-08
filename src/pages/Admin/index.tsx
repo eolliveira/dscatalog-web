@@ -3,6 +3,7 @@ import PrivateRoute from '../../components/PrivateRoute';
 import Navbar from './NavBar';
 import './style.css';
 import Users from './Users';
+import { Products } from './Products';
 
 const Admin = () => {
   return (
@@ -12,7 +13,7 @@ const Admin = () => {
         {/* Rotas aninhadas */}
         <Switch>
           <PrivateRoute path="/admin/products">
-            <h1>CRUD PRODUCTS</h1>
+           <Products />
           </PrivateRoute>
           <PrivateRoute path="/admin/categories">
             <h1>CRUD CATEGORIES</h1>
