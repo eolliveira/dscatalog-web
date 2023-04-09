@@ -37,3 +37,20 @@ export const CardCategory = styled.div`
   padding: 5px;
   flex-wrap: wrap;
 `;
+
+
+export const CardButtons = styled.div`
+  display: flex;
+  padding: 20px 10px;
+  justify-content: space-between;
+`;
+
+export const ButtonUpdate = styled.div`
+  width: 165px;
+`;
+
+export const ButtonRemove = styled.div`
+  width: 165px;
+  margin-right: 10px;
+`;
+
