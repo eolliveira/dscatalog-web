@@ -1,5 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 import { List } from './List';
+import { Form } from './Form';
 
 export function Products() {
   return (
@@ -8,7 +9,7 @@ export function Products() {
        <List />
       </Route>
       <Route path={'/admin/products/:productId'}>
-        <h1>Form</h1>
+        <Form />
       </Route>
     </Switch>
   );
