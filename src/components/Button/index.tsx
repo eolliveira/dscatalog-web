@@ -1,8 +1,8 @@
 import { Container, ButtonText } from './style';
 
-type Props  = {
+type Props = {
   text: String;
-  maxWidth: number
+  maxWidth: number;
 };
 
 //desestrutura text do obj Props
@@ -17,5 +17,3 @@ const Button = ({ text, maxWidth }: Props) => {
 };
 
 export default Button;
-
-

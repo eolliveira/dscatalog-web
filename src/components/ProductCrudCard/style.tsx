@@ -31,3 +31,9 @@ export const CardName = styled.div`
     margin-bottom: 20px;
   }
 `;
+
+export const CardCategory = styled.div`
+  display: flex;
+  padding: 5px;
+  flex-wrap: wrap;
+`;

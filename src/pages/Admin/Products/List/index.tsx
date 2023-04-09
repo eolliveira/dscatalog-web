@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import ProductCrudCard from '../../../../components/ProductCrudCard';
 import Button from '../../../../components/Button';
 import styled from 'styled-components';
@@ -30,21 +30,24 @@ export function List() {
   return (
     <Wrapper>
       <HeaderContainer>
-        <Button maxWidth={170} text={'Adicionar'} />
+        <Link to={'/admin/products/create'}>
+          <Button maxWidth={170} text={'Adicionar'} />
+        </Link>
+
         <FilterContainer className="base-card">filtro</FilterContainer>
       </HeaderContainer>
-      <span className='row'>
-        <span className='col-sm-6 col-md-12'>
-        <ProductCrudCard product={product} />
+      <span className="row">
+        <span className="col-sm-6 col-md-12">
+          <ProductCrudCard product={product} />
         </span>
-        <span className='col-sm-6 col-md-12'>
-        <ProductCrudCard product={product} />
+        <span className="col-sm-6 col-md-12">
+          <ProductCrudCard product={product} />
         </span>
-        <span className='col-sm-6 col-md-12'>
-        <ProductCrudCard product={product} />
+        <span className="col-sm-6 col-md-12">
+          <ProductCrudCard product={product} />
         </span>
-        <span className='col-sm-6 col-md-12'>
-        <ProductCrudCard product={product} />
+        <span className="col-sm-6 col-md-12">
+          <ProductCrudCard product={product} />
         </span>
       </span>
     </Wrapper>
