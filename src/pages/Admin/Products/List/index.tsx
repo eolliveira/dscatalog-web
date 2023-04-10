@@ -2,30 +2,30 @@ import { Link, Route, Switch } from 'react-router-dom';
 import ProductCrudCard from '../../../../components/ProductCrudCard';
 import Button from '../../../../components/Button';
 import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import { AxiosRequestConfig } from 'axios';
+import { requestBackend } from '../../../../http/requests';
+import { Product } from '../../../../types/Product';
+import { SpringPage } from '../../../../types/vendor/spring';
 
 export function List() {
-  const product = {
-    id: 2,
-    name: 'Smart TV',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    price: 2190.0,
-    imgUrl:
-      'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/2-big.jpg',
-    date: '2020-07-14T10:00:00Z',
-    categories: [
-      {
-        id: 1,
-        name: 'Livros',
-        products: [],
+  const [page, setPage] = useState<SpringPage<Product>>();
+
+  useEffect(() => {
+    const params: AxiosRequestConfig = {
+      method: 'GET',
+      url: '/products',
+      //data = corpo da req
+      params: {
+        page: 0,
+        size: 12,
       },
-      {
-        id: 3,
-        name: 'Computadores',
-        products: [],
-      },
-    ],
-  };
+    };
+
+    requestBackend(params).then((response) => {
+      setPage(response.data);
+    });
+  }, []);
 
   return (
     <Wrapper>
@@ -37,18 +37,11 @@ export function List() {
         <FilterContainer className="base-card">filtro</FilterContainer>
       </HeaderContainer>
       <span className="row">
-        <span className="col-sm-6 col-md-12">
-          <ProductCrudCard product={product} />
-        </span>
-        <span className="col-sm-6 col-md-12">
-          <ProductCrudCard product={product} />
-        </span>
-        <span className="col-sm-6 col-md-12">
-          <ProductCrudCard product={product} />
-        </span>
-        <span className="col-sm-6 col-md-12">
-          <ProductCrudCard product={product} />
-        </span>
+        {page?.content.map((product) => (
+          <span className="col-sm-6 col-md-12">
+            <ProductCrudCard product={product} />
+          </span>
+        ))}
       </span>
     </Wrapper>
   );
