@@ -16,6 +16,7 @@ export const ProductContainer = styled.div`
 `;
 
 export const CardImage = styled.div`
+height: 140px;
   text-align: center;
   border-bottom: 1px solid #e1e1e1;
 

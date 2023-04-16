@@ -16,7 +16,7 @@ type LocationState = {
 };
 
 //tipo dos dados do formulário
-type FormData = {
+type AutheticateDTO = {
   username: string;
   password: string;
 };
@@ -43,13 +43,13 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<AutheticateDTO>();
 
   //register = registra os inputs dos formulário
   //handleSubmit = evento do submit do formulário
 
   //recebe o tipo do formulário
-  const onSubmit = (formData: FormData) => {
+  const onSubmit = (formData: AutheticateDTO) => {
     setIsLoading(true);
     //retorna uma promisse(assync)
     requestBackendLogin(formData)
