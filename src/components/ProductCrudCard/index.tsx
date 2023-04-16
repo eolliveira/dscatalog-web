@@ -12,12 +12,27 @@ import {
   CardName,
   ProductContainer,
 } from './style';
+import { AxiosRequestConfig } from 'axios';
+import { requestBackend } from '../../http/requests';
 
 type Props = {
   product: Product;
+  onDelete: Function;
 };
 
-const ProductCrudCard = ({ product }: Props) => {
+const ProductCrudCard = ({ product, onDelete }: Props) => {
+  const handleDelete = (productId: number) => {
+    const params: AxiosRequestConfig = {
+      method: 'DELETE',
+      url: `/products/${productId}`,
+      withCredentials: true,
+    };
+
+    requestBackend(params).then(() => {
+      onDelete();
+    });
+  };
+
   return (
     <ProductContainer className="base-card">
       <CardImage>
@@ -35,7 +50,12 @@ const ProductCrudCard = ({ product }: Props) => {
         </CardCategory>
       </CardInformation>
       <CardButtons>
-        <ButtonRemove className="btn btn-outline-danger">EXCLUIR</ButtonRemove>
+        <ButtonRemove
+          onClick={() => handleDelete(product.id)}
+          className="btn btn-outline-danger"
+        >
+          EXCLUIR
+        </ButtonRemove>
         <Link to={`/admin/products/${product.id}`}>
           <ButtonUpdate className="btn btn-outline-secondary">
             EDITAR

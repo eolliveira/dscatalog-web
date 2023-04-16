@@ -12,10 +12,13 @@ export function List() {
   const [page, setPage] = useState<SpringPage<Product>>();
 
   useEffect(() => {
+    getProducts();
+  }, []);
+
+  function getProducts() {
     const params: AxiosRequestConfig = {
       method: 'GET',
       url: '/products',
-      //data = corpo da req
       params: {
         page: 0,
         size: 50,
@@ -25,7 +28,7 @@ export function List() {
     requestBackend(params).then((response) => {
       setPage(response.data);
     });
-  }, []);
+  }
 
   return (
     <Wrapper>
@@ -39,7 +42,7 @@ export function List() {
       <span className="row">
         {page?.content.map((product) => (
           <span className="col-sm-6 col-md-12">
-            <ProductCrudCard product={product} />
+            <ProductCrudCard product={product} onDelete={() => getProducts()} />
           </span>
         ))}
       </span>
