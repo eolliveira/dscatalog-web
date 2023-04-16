@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { BadgeCategory } from '../BadgeCategory';
 import ProductPrice from '../ProductPrice';
@@ -35,9 +36,11 @@ const ProductCrudCard = ({ product }: Props) => {
       </CardInformation>
       <CardButtons>
         <ButtonRemove className="btn btn-outline-danger">EXCLUIR</ButtonRemove>
-        <ButtonUpdate className="btn btn-outline-secondary">
-          EDITAR
-        </ButtonUpdate>
+        <Link to={`/admin/products/${product.id}`}>
+          <ButtonUpdate className="btn btn-outline-secondary">
+            EDITAR
+          </ButtonUpdate>
+        </Link>
       </CardButtons>
     </ProductContainer>
   );

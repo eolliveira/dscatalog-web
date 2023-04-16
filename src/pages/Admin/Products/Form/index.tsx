@@ -4,38 +4,63 @@ import { Product } from '../../../../types/Product';
 import { useForm } from 'react-hook-form';
 import { requestBackend } from '../../../../http/requests';
 import { config } from 'process';
+import { useEffect, useState } from 'react';
 import { AxiosRequestConfig } from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 export function Form() {
+  const history = useHistory();
+
+  type urlParams = {
+    productId: string;
+  };
+
+  const { productId } = useParams<urlParams>();
+
+  const isEditing = productId !== 'create';
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<Product>();
 
-  const history = useHistory();
+  useEffect(() => {
+    if (isEditing) {
+      requestBackend({ url: `/products/${productId}` }).then((response) => {
+        const product = response.data as Product;
+        setValue('name', product.name);
+        setValue('price', product.price);
+        setValue('description', product.description);
+        setValue('imgUrl', product.imgUrl);
+        setValue('categories', product.categories);
+      });
+    }
+  });
 
   const onSubmit = (formData: Product) => {
     const data = {
       ...formData,
-      categories: [
-        {
-          id: 1,
-          name: 'description',
-        },
-      ],
+      categories: isEditing
+        ? formData.categories
+        : [
+            {
+              id: 1,
+              name: 'description',
+            },
+          ],
     };
 
     const params: AxiosRequestConfig = {
-      method: 'POST',
-      url: '/products',
+      method: isEditing ? 'PUT' : 'POST',
+      url: isEditing ? `/products/${productId}` : '/products',
       data,
       withCredentials: true,
     };
 
-    requestBackend(params).then((response) => {
-      console.log(response.data);
+    requestBackend(params).then(() => {
+      history.push('/admin/products');
     });
   };
 
@@ -121,7 +146,7 @@ export function Form() {
               CANCELAR
             </ButtonCancel>
             <ButtonAdd className="btn btn-outline-secondary">
-              CADASTRAR
+              SALVAR
             </ButtonAdd>
           </ButtonsContainer>
         </form>
