@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 import { Container } from '../../../ProductDetails/styles';
 import { Product } from '../../../../types/Product';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { requestBackend } from '../../../../http/requests';
 import { config } from 'process';
 import { useEffect, useState } from 'react';
 import { AxiosRequestConfig } from 'axios';
 import { useHistory, useParams } from 'react-router-dom';
+import Select from 'react-select';
+import { Category } from '../../../../types/Category';
 
 export function Form() {
   const history = useHistory();
@@ -16,6 +18,7 @@ export function Form() {
   };
 
   const { productId } = useParams<urlParams>();
+  const [categories, setCategories] = useState<Category[]>([]);
 
   const isEditing = productId !== 'create';
 
@@ -24,7 +27,14 @@ export function Form() {
     handleSubmit,
     formState: { errors },
     setValue,
+    control,
   } = useForm<Product>();
+
+  useEffect(() => {
+    requestBackend({ url: `/categories` }).then((response) => {
+      setCategories(response.data.content);
+    });
+  }, []);
 
   useEffect(() => {
     if (isEditing) {
@@ -37,7 +47,7 @@ export function Form() {
         setValue('categories', product.categories);
       });
     }
-  });
+  }, [isEditing, productId, setValue]);
 
   const onSubmit = (formData: Product) => {
     const data = {
@@ -90,7 +100,7 @@ export function Form() {
                 name="name"
               />
 
-              <div className="invalid-feedback d-block mb-1 ">
+              {/* <div className="invalid-feedback d-block mb-1 ">
                 {errors.categories?.message}
               </div>
               <input
@@ -103,6 +113,28 @@ export function Form() {
                 }`}
                 placeholder="Categorias"
                 name="categories"
+              /> */}
+              {/* <Select options={options} /> */}
+
+              {errors.categories && (
+                <div className="invalid-feedback d-block mb-1 ">
+                  Campo requerido
+                </div>
+              )}
+              <Controller
+                name="categories"
+                rules={{ required: true }}
+                control={control}
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    options={categories}
+                    isMulti
+                    //menuShouldScrollIntoView
+                    getOptionLabel={(category: Category) => category.name}
+                    getOptionValue={(category: Category) => String(category.id)}
+                  />
+                )}
               />
 
               <div className="invalid-feedback d-block mb-1 ">
@@ -145,9 +177,7 @@ export function Form() {
             >
               CANCELAR
             </ButtonCancel>
-            <ButtonAdd className="btn btn-outline-secondary">
-              SALVAR
-            </ButtonAdd>
+            <ButtonAdd className="btn btn-outline-secondary">SALVAR</ButtonAdd>
           </ButtonsContainer>
         </form>
       </Container>
@@ -195,4 +225,12 @@ export const ButtonAdd = styled.button`
 export const ButtonCancel = styled.button`
   width: 160px;
   margin-right: 10px;
+`;
+
+export const CustomSelect = styled(Select)`
+  border-radius: 10px;
+  font-size: 1em;
+  letter-spacing: -0.015em;
+  color: #263238;
+  height: 50px;
 `;
