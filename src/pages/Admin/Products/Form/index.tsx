@@ -3,12 +3,12 @@ import { Container } from '../../../ProductDetails/styles';
 import { Product } from '../../../../types/Product';
 import { Controller, useForm } from 'react-hook-form';
 import { requestBackend } from '../../../../http/requests';
-import { config } from 'process';
 import { useEffect, useState } from 'react';
 import { AxiosRequestConfig } from 'axios';
 import { useHistory, useParams } from 'react-router-dom';
 import Select from 'react-select';
 import { Category } from '../../../../types/Category';
+import CurrencyInput from 'react-currency-input-field';
 
 export function Form() {
   const history = useHistory();
@@ -52,14 +52,7 @@ export function Form() {
   const onSubmit = (formData: Product) => {
     const data = {
       ...formData,
-      categories: isEditing
-        ? formData.categories
-        : [
-            {
-              id: 1,
-              name: 'description',
-            },
-          ],
+      price: String(formData.price).replace(',', '.'),
     };
 
     const params: AxiosRequestConfig = {
@@ -99,23 +92,6 @@ export function Form() {
                 placeholder="Nome do produto"
                 name="name"
               />
-
-              {/* <div className="invalid-feedback d-block mb-1 ">
-                {errors.categories?.message}
-              </div>
-              <input
-                {...register('categories', {
-                  required: 'Campo requerido',
-                })}
-                type="text"
-                className={`form-control base-input mb-3 ${
-                  errors.categories ? 'is-invalid' : ''
-                }`}
-                placeholder="Categorias"
-                name="categories"
-              /> */}
-              {/* <Select options={options} /> */}
-
               {errors.categories && (
                 <div className="invalid-feedback d-block mb-1 ">
                   Campo requerido
@@ -129,8 +105,8 @@ export function Form() {
                   <Select
                     {...field}
                     options={categories}
+                    classNamePrefix={'product-crud-select'}
                     isMulti
-                    //menuShouldScrollIntoView
                     getOptionLabel={(category: Category) => category.name}
                     getOptionValue={(category: Category) => String(category.id)}
                   />
@@ -140,18 +116,22 @@ export function Form() {
               <div className="invalid-feedback d-block mb-1 ">
                 {errors.price?.message}
               </div>
-              <input
-                {...register('price', {
-                  required: 'Campo requerido',
-                })}
-                type="number"
-                className={`form-control base-input mb-3 ${
-                  errors.price ? 'is-invalid' : ''
-                }`}
-                placeholder="Preço"
+              <Controller
                 name="price"
+                rules={{ required: 'Campo requerido' }}
+                control={control}
+                render={({ field }) => (
+                  <CurrencyInput
+                    placeholder="Preço"
+                    className="form-control base-input mb-3 mt-3"
+                    disableGroupSeparators={true}
+                    value={field.value}
+                    onValueChange={field.onChange}
+                  />
+                )}
               />
             </div>
+
             <div className="col-lg-6">
               <div className="invalid-feedback d-block mb-1 ">
                 {errors.description?.message}

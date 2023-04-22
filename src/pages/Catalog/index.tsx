@@ -16,13 +16,17 @@ const Catalog = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    getProducts(0);
+  }, []);
+
+  function getProducts(pageNumber: number) {
     //AxiosRequestConfig = tipo padrão do axios para passar configurações na requisição
     const params: AxiosRequestConfig = {
       method: 'GET',
       url: '/products',
       //data = corpo da req
       params: {
-        page: 0,
+        page: pageNumber,
         size: 12,
       },
     };
@@ -34,7 +38,7 @@ const Catalog = () => {
         setPage(response.data);
       })
       .finally(() => setIsLoading(false));
-  }, []);
+  }
 
   return (
     <div className="container catalog-container">
@@ -58,7 +62,11 @@ const Catalog = () => {
       </div>
 
       <div className="row catalog-pagination">
-        <Pagination />
+        <Pagination
+          onChange={getProducts}
+          pageCount={page ? page.totalPages : 0}
+          range={3}
+        />
       </div>
     </div>
   );
